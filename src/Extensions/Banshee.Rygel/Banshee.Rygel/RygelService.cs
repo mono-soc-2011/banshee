@@ -40,6 +40,8 @@ namespace Banshee.Rygel
 {
     public class RygelService : IExtensionService, IDisposable
     {
+        private RootContainer root;
+
         public RygelService ()
         {
         }
@@ -49,10 +51,18 @@ namespace Banshee.Rygel
             if (!DBusConnection.Enabled) {
                 return;
             }
+
+            root = new RootContainer();
+            if (!root.Request()) {
+                Hyena.Log.Warning ("Rygel service couldn't grab bus name");
+                return;
+            }
         }
 
         void IDisposable.Dispose ()
         {
+            root.Release();
+            root = null;
         }
 
         string IService.ServiceName {

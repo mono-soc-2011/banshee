@@ -33,6 +33,7 @@
     <Compile Include="Banshee.Rygel\MediaContainer.cs" />
     <Compile Include="Banshee.Rygel\MediaItem.cs" />
     <Compile Include="Banshee.Rygel\MediaObject.cs" />
+    <Compile Include="Banshee.Rygel\RootContainer.cs" />
     <Compile Include="Banshee.Rygel\RygelService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@ SOURCES =  \
 	Banshee.Rygel/MediaContainer.cs \
 	Banshee.Rygel/MediaItem.cs \
 	Banshee.Rygel/MediaObject.cs \
+	Banshee.Rygel/RootContainer.cs \
 	Banshee.Rygel/RygelService.cs
 
 RESOURCES = Banshee.Rygel.addin.xml
