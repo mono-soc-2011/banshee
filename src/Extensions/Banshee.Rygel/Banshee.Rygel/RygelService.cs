@@ -41,6 +41,7 @@ namespace Banshee.Rygel
     public class RygelService : IExtensionService, IDisposable
     {
         private RootContainer root;
+        private CollectionIndexer indexer;
 
         public RygelService ()
         {
@@ -57,12 +58,16 @@ namespace Banshee.Rygel
                 Hyena.Log.Warning ("Rygel service couldn't grab bus name");
                 return;
             }
+
+            indexer = new CollectionIndexer(tracks => root.ProcessTracks(tracks));
+            indexer.Start();
         }
 
         void IDisposable.Dispose ()
         {
             root.Release();
             root = null;
+            indexer = null;
         }
 
         string IService.ServiceName {
