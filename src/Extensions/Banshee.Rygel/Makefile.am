@@ -4,6 +4,7 @@ LINK = $(REF_EXTENSION_RYGEL)
 INSTALL_DIR = $(EXTENSIONS_INSTALL_DIR)
 
 SOURCES =  \
+	Banshee.Rygel/BansheeMediaItem.cs \
 	Banshee.Rygel/CollectionIndexer.cs \
   Banshee.Rygel/IRygelInterfaces2.cs \
 	Banshee.Rygel/MediaContainer.cs \
