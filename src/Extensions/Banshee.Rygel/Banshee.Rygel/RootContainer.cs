@@ -38,12 +38,13 @@ namespace Banshee.Rygel
 	  {
 		    private static ObjectPath banshee_object_path = new ObjectPath("/org/gnome/UPnP/MediaServer2/Banshee");
 		    private static string banshee_service_name = "org.gnome.UPnP.MediaServer2.Banshee";
+        private MediaContainer songs;
 		    private bool owner;
 		
 		    public RootContainer () : base(null, "Banshee", banshee_object_path)
 		    {
 			      owner = false;
-			      MediaContainer songs = new MediaContainer(this, "Songs", new ObjectPath("/org/gnome/UPnP/MediaServer2/Banshee/Containers/Songs"));
+			      songs = new MediaContainer(this, "Songs", new ObjectPath("/org/gnome/UPnP/MediaServer2/Banshee/Containers/Songs"));
 			      AddObject(songs, false);
 		    }
 		
@@ -52,8 +53,15 @@ namespace Banshee.Rygel
 		        if (owner)
 				        Bus.Session.ReleaseName (banshee_service_name);
 		    }
-		
+
 		    public static ObjectPath BansheeBaseObjectPath { get { return banshee_object_path; } }
+
+        public void ProcessTracks (List<TrackInfo> tracks)
+        {
+            foreach (var track in tracks) {
+                songs.AddObject(new BansheeMediaItem(songs, track), false);
+            }
+        }
 		
 		    public bool Request ()
 		    {
