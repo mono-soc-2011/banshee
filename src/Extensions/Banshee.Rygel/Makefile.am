@@ -4,6 +4,7 @@ LINK = $(REF_EXTENSION_RYGEL)
 INSTALL_DIR = $(EXTENSIONS_INSTALL_DIR)
 
 SOURCES =  \
+  Banshee.Rygel/IRygelInterfaces2.cs \
 	Banshee.Rygel/RygelService.cs
 
 RESOURCES = Banshee.Rygel.addin.xml
